@@ -1,0 +1,51 @@
+﻿package com.example.mawareethsolid.view.adapters;
+
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+public class ${CLASS_NAME} extends RecyclerView.Adapter<${CLASS_NAME}.${VIEW_HOLDER_CLASS}> {
+    
+    private List<${ITEM_TYPE}> data = new List<>();
+    private ${VIEW_LISTENER_CALLBACK_INTERFACE} viewListener;
+    
+    public ${CLASS_NAME}(List<${ITEM_TYPE}> data,${VIEW_LISTENER_CALLBACK_INTERFACE} viewListener){
+        this.data = data;
+        this.viewListener = viewListener;
+    }
+    @NonNull
+    @Override
+    public ${VIEW_HOLDER_CLASS} onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ${VIEW_HOLDER_CLASS}(LayoutInflater.from(parent.getContext()).inflate(${LAYOUT},parent,false));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ${CLASS_NAME}.${VIEW_HOLDER_CLASS} holder, int position) {
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return data.size();
+    }
+
+    public void addItems(List<${ITEM_TYPE}> items){
+        this.data.addAll(items);
+        notifyDataSetChanged();
+    }
+    class ${VIEW_HOLDER_CLASS} extends RecyclerView.ViewHolder{
+    
+        
+         ${VIEW_HOLDER_CLASS}(@NonNull View itemView) {
+            super(itemView);
+            
+            try{
+                ButterKnife.bind(this,itemView);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+}
